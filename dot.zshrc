@@ -9,8 +9,6 @@ export ZSH=/Users/david/.oh-my-zsh
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
 ZSH_THEME="powerlevel9k/powerlevel9k"
 
 # username
@@ -73,6 +71,7 @@ plugins=(
 
 source $ZSH/oh-my-zsh.sh
 
+source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 # User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"
@@ -101,7 +100,6 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-
 
 # test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
