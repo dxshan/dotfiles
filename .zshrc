@@ -10,6 +10,7 @@ export ZSH=/Users/david/.oh-my-zsh
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 ZSH_THEME="powerlevel9k/powerlevel9k"
+POWERLEVEL9K_MODE="nerdfont-complete"
 
 # username
 DEFAULT_USER="david"
@@ -105,18 +106,8 @@ source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 POWERLEVEL9K_ANACONDA_BACKGROUND='black'
 POWERLEVEL9K_ANACONDA_FOREGROUND='white'
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(
-  status
-  context
-  dir
-  vcs
-)
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(
-  root_indicator
-  background_jobs
-  anaconda
-  time
-)
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(battery status context dir vcs)
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(root_indicator background_jobs anaconda time)
 POWERLEVEL9K_STATUS_VERBOSE=false
 POWERLEVEL9K_SHORTEN_STRATEGY='truncate_middle'
 POWERLEVEL9K_SHORTEN_DIR_LENGTH=3
