@@ -9,7 +9,9 @@ export ZSH=/Users/david/.oh-my-zsh
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="powerlevel9k/powerlevel9k"
+#ZSH_THEME="refined"
+#ZSH_THEME="powerlevel9k/powerlevel9k"
+ZSH_THEME="powerlevel10k/powerlevel10k"
 POWERLEVEL9K_MODE="nerdfont-complete"
 
 # username
@@ -65,7 +67,7 @@ DEFAULT_USER="david"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-  git 
+  git
   zsh-autosuggestions 
   sublime
 )
@@ -104,10 +106,21 @@ source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
+POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX=''
+POWERLEVEL9K_PROMPT_ON_NEWLINE=true
+#POWERLEVEL9K_RPROMPT_ON_NEWLINE=true
+#POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX="%F{014}\u2570%F{cyan}\uF460%F{073}\uF460%F{109}\uF460%f "
+POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX="%F{198}\u2570%F{205}❯%F{218}❯%F{224}❯%f "
+
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(status battery context anaconda dir vcs)
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(root_indicator background_jobs load ram time)
+
+POWERLEVEL9K_SHORTEN_STRATEGY='truncate_middle'
+POWERLEVEL9K_SHORTEN_DIR_LENGTH=1
+
 POWERLEVEL9K_ANACONDA_BACKGROUND='black'
 POWERLEVEL9K_ANACONDA_FOREGROUND='white'
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(battery status context dir vcs)
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(root_indicator background_jobs anaconda time)
+POWERLEVEL9K_HOME_ICON=''
+POWERLEVEL9K_HOME_SUB_ICON=''
+POWERLEVEL9K_FOLDER_ICON=''
 POWERLEVEL9K_STATUS_VERBOSE=false
-POWERLEVEL9K_SHORTEN_STRATEGY='truncate_middle'
-POWERLEVEL9K_SHORTEN_DIR_LENGTH=3
