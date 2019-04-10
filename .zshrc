@@ -1,6 +1,5 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
-
 export PATH="$HOME/anaconda2/bin:$PATH"
 
 # Path to your oh-my-zsh installation.
@@ -70,11 +69,11 @@ plugins=(
   git
   zsh-autosuggestions 
   sublime
+  osx
 )
 
 source $ZSH/oh-my-zsh.sh
 
-source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 # User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"
@@ -103,24 +102,31 @@ source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-
+alias lc='colorls -lA --sd'
+alias lsa='colorls -A'
 # test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
+POWERLEVEL9K_LEFT_SEGMENT_SEPARATOR='▓▒░'
+POWERLEVEL9K_RIGHT_SEGMENT_SEPARATOR='░▒▓'
 POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX=''
 POWERLEVEL9K_PROMPT_ON_NEWLINE=true
-#POWERLEVEL9K_RPROMPT_ON_NEWLINE=true
 #POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX="%F{014}\u2570%F{cyan}\uF460%F{073}\uF460%F{109}\uF460%f "
-POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX="%F{198}\u2570%F{205}❯%F{218}❯%F{224}❯%f "
+POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX="%F{5}❯%f%k "
 
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(status battery context anaconda dir vcs)
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(status anaconda context battery dir vcs)
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(root_indicator background_jobs load ram time)
 
 POWERLEVEL9K_SHORTEN_STRATEGY='truncate_middle'
 POWERLEVEL9K_SHORTEN_DIR_LENGTH=1
 
+POWERLEVEL9K_BATTERY_ICON='\uf1e6 '
 POWERLEVEL9K_ANACONDA_BACKGROUND='black'
 POWERLEVEL9K_ANACONDA_FOREGROUND='white'
 POWERLEVEL9K_HOME_ICON=''
 POWERLEVEL9K_HOME_SUB_ICON=''
 POWERLEVEL9K_FOLDER_ICON=''
 POWERLEVEL9K_STATUS_VERBOSE=false
+
+eval "$(rbenv init -)"
+source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
