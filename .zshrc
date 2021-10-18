@@ -1,40 +1,47 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block, everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
-export PATH="$HOME/anaconda2/bin:$PATH"
+# export PATH="$HOME/usr/local/bin:$HOME/miniconda3/bin:$PATH"  # commented out by conda initialize
 
 # Path to your oh-my-zsh installation.
-export ZSH=/Users/david/.oh-my-zsh
+export ZSH="/Users/dshan/.oh-my-zsh"
 
-# Set name of the theme to load. Optionally, if you set this to "random"
-# it'll load a random theme each time that oh-my-zsh is loaded.
+# Set name of the theme to load --- if set to "random", it will
+# load a random theme each time oh-my-zsh is loaded, in which case,
+# to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-#ZSH_THEME="refined"
-#ZSH_THEME="powerlevel9k/powerlevel9k"
 ZSH_THEME="powerlevel10k/powerlevel10k"
-POWERLEVEL9K_MODE="nerdfont-complete"
 
-# username
-DEFAULT_USER="david"
-
-# Set list of themes to load
-# Setting this variable when ZSH_THEME=random
-# cause zsh load theme from this variable instead of
-# looking in ~/.oh-my-zsh/themes/
-# An empty array have no effect
+# Set list of themes to pick from when loading at random
+# Setting this variable when ZSH_THEME=random will cause zsh to load
+# a theme from this variable instead of looking in ~/.oh-my-zsh/themes/
+# If set to an empty array, this variable will have no effect.
 # ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
 
-# Uncomment the following line to use hyphen-insensitive completion. Case
-# sensitive completion must be off. _ and - will be interchangeable.
+# Uncomment the following line to use hyphen-insensitive completion.
+# Case-sensitive completion must be off. _ and - will be interchangeable.
 # HYPHEN_INSENSITIVE="true"
 
 # Uncomment the following line to disable bi-weekly auto-update checks.
 # DISABLE_AUTO_UPDATE="true"
 
+# Uncomment the following line to automatically update without prompting.
+# DISABLE_UPDATE_PROMPT="true"
+
 # Uncomment the following line to change how often to auto-update (in days).
 # export UPDATE_ZSH_DAYS=13
+
+# Uncomment the following line if pasting URLs and other text is messed up.
+# DISABLE_MAGIC_FUNCTIONS=true
 
 # Uncomment the following line to disable colors in ls.
 # DISABLE_LS_COLORS="true"
@@ -55,22 +62,21 @@ DEFAULT_USER="david"
 
 # Uncomment the following line if you want to change the command execution time
 # stamp shown in the history command output.
-# The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
+# You can set one of the optional three formats:
+# "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
+# or set a custom format using the strftime function format specifications,
+# see 'man strftime' for details.
 # HIST_STAMPS="mm/dd/yyyy"
 
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
-# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
+# Which plugins would you like to load?
+# Standard plugins can be found in ~/.oh-my-zsh/plugins/*
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(
-  git
-  zsh-autosuggestions 
-  sublime
-  osx
-)
+plugins=(git zsh-autosuggestions docker docker-compose alias-finder autojump)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -91,9 +97,6 @@ source $ZSH/oh-my-zsh.sh
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
-# ssh
-# export SSH_KEY_PATH="~/.ssh/rsa_id"
-
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
@@ -102,31 +105,67 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-alias lc='colorls -lA --sd'
-alias lsa='colorls -A'
-# test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+alias zshrc="vim ~/.zshrc"
+alias proxyemr='autossh -M0 -o "ServerAliveInterval 30" -o "ServerAliveCountMax 3" -N -D 18080 tick'
 
-POWERLEVEL9K_LEFT_SEGMENT_SEPARATOR='▓▒░'
-POWERLEVEL9K_RIGHT_SEGMENT_SEPARATOR='░▒▓'
-POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX=''
-POWERLEVEL9K_PROMPT_ON_NEWLINE=true
-#POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX="%F{014}\u2570%F{cyan}\uF460%F{073}\uF460%F{109}\uF460%f "
-POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX="%F{5}❯%f%k "
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ -f ~/.p10k.zsh ]] && source ~/.p10k.zsh
 
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(status anaconda context battery dir vcs)
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(root_indicator background_jobs load ram time)
-
-POWERLEVEL9K_SHORTEN_STRATEGY='truncate_middle'
-POWERLEVEL9K_SHORTEN_DIR_LENGTH=1
-
-POWERLEVEL9K_BATTERY_ICON='\uf1e6 '
-POWERLEVEL9K_ANACONDA_BACKGROUND='black'
-POWERLEVEL9K_ANACONDA_FOREGROUND='white'
-POWERLEVEL9K_HOME_ICON=''
-POWERLEVEL9K_HOME_SUB_ICON=''
-POWERLEVEL9K_FOLDER_ICON=''
-POWERLEVEL9K_STATUS_VERBOSE=false
-
-eval "$(rbenv init -)"
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
+set-aws-profile () {
+  AWS_CLI_PROFILE=$1
+  MFA_TOKEN=$2
+
+  # Clean up any existing environment variables
+  unset AWS_ACCESS_KEY_ID
+  unset AWS_SECRET_ACCESS_KEY
+  unset AWS_SESSION_TOKEN
+
+  # Set the AWS profile
+  export AWS_PROFILE=${AWS_CLI_PROFILE}
+
+  if [ "$MFA_TOKEN" ]; then
+    # source the MFA ARNs
+    . ~/.aws/mfa.conf
+
+    eval "MFA_ARN=\"\${$AWS_CLI_PROFILE}\""
+
+    # get the MFA session tokens
+    MFA_RAW=$(aws --profile $AWS_CLI_PROFILE sts get-session-token --serial-number $MFA_ARN --token-code $MFA_TOKEN --output json)
+    MFA_JSON=$(echo $MFA_RAW | jq -r .Credentials)
+
+    MFA_ACCESS_KEY_ID=$(echo $MFA_JSON | jq -r .AccessKeyId)
+    MFA_SECRET_ACCESS_KEY=$(echo $MFA_JSON | jq -r .SecretAccessKey)
+    MFA_SESSION_TOKEN=$(echo $MFA_JSON | jq -r .SessionToken)
+
+    export AWS_ACCESS_KEY_ID=${MFA_ACCESS_KEY_ID}
+    export AWS_SECRET_ACCESS_KEY=${MFA_SECRET_ACCESS_KEY}
+    export AWS_SESSION_TOKEN=${MFA_SESSION_TOKEN}
+  fi
+}
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/Users/dshan/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/Users/dshan/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/Users/dshan/miniconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/Users/dshan/miniconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
+export TERM=xterm-256color
+export ROBLOX_SERVICE_CONTRACTS=~/Roblox/service-contracts
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# >>> jenv initialize >>> 
+export PATH="$HOME/.jenv/bin:$PATH"
+eval "$(jenv init -)"
+# <<< jenv initialize <<<
